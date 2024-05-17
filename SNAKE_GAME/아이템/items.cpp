@@ -42,7 +42,9 @@ void create_item(const char * itemname){
 
     // 5 초 동안 대기하면서 while문 돌기
     while (difftime(time(nullptr), start_time) < 5) {
+    SnakeEatItem()
     }
+    
 
     // 5초 이후엔 해당 위치에 공백 문자 출력
     mvprintw(item.r,item.c, " ");
