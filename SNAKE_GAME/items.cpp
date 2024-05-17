@@ -32,17 +32,28 @@ item::grid item::create_item_rc(){
 void item::create_item(const char * itemname){
     item::grid item;
     item = create_item_rc();
+    calldefcnt++;
+    time_t start_time = time(nullptr);
 
-    // G라는 글씨를  growth아이템으로 설정하며 x,y에 작성함
+    // 해당되는 아이템으로 설정하며 r,c에 작성함
+
     mvprintw(item.r, item.c, itemname);
+    mvprintw(0,25, "score : %d",0);
+    mvprintw(11,25, "playtime : %ld", time(nullptr)- start_time + calldefcnt * 5 );
+
     refresh();
 
     // 시작시간을 time(nullptr)로 지정함  
-    time_t start_time = time(nullptr);
 
     bool temp = true;
     while (temp){
-        if(difftime(time(nullptr), start_time) >= 5){
+    time_t in_time = time(nullptr);
+    while (difftime(time(nullptr), start_time) < 1) {
+    }
+    mvprintw(0,25, "score : %d",0);
+    mvprintw(11,25, "playtime : %ld", time(nullptr)- start_time + calldefcnt * 5 );
+    refresh();
+        if(difftime(time(nullptr), start_time) >= 5){ // 여기서 뱀이 아이템 먹을시 라는 함수 구현필요(추가로 time보수치연산함수도 추가해야함)
         mvprintw(item.r,item.c, " ");
         temp = false;
         }
