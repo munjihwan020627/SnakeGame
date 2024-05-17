@@ -1,17 +1,9 @@
 #include<ncurses.h>
 #include<time.h>
+#include <thread>
 #include"items.h"
-#include"map.h"
 
 
-void printScorePlaytime(time_t start_time,int score){
-    time_t in_time = time(nullptr);
-    while (difftime(time(nullptr), start_time) < 1) {
-    }
-    mvprintw(0,25, "score : %d",score);
-    mvprintw(11,25, "playtime : %ld", time(nullptr)- start_time );
-    refresh();
-}
 
 void draw_maps() {
     int rows{22}; 
@@ -54,11 +46,13 @@ int main() {
     noecho();             // 입력 문자를 화면에 출력하지 않음
     keypad(stdscr, TRUE); // 특수 키 입력 활성화
     draw_maps();
-time_t last_time_create = start_time; // timetocreate 마지막 실행 시간 저장
+    refresh();
+    time_t last_time_create = start_time; // timetocreate 마지막 실행 시간 저장
     while (true) {
 
         time_t current_time = time(nullptr);
-        printScorePlaytime(start_time, score); // 항상 시간과 점수를 출력
+        item i;
+        i.timetocreate(); // 5초마다 호출
 
         if (current_time - last_time_create >= 5) {
             item i;
