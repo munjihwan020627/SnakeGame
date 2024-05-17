@@ -17,11 +17,6 @@ void draw_maps() {
     int rows{22}; 
     int cols{22};
     
-    int score{};
-    time_t start_time = time(nullptr);
-    
-    
-    
 
     // 중앙을 기준으로 x, y축 그리기
     mvaddch(0,0, 'X');
