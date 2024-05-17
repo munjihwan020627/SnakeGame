@@ -2,22 +2,14 @@
 #define _MYCOMPLEX_H_
 
 #include<time.h>
-
-
-
-
+#include<ncurses.h>
 
 
 
 class map{
-
-void printScorePlaytime(time_t start_time,int score);
-void draw_maps();
-
-
-
-
-
+    public:
+        void printScorePlaytime(time_t start_time,int score);
+        void draw_maps();
 
 
 };
